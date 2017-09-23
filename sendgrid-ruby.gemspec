@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'smtpapi', '~> 0.1'
-  spec.add_dependency 'faraday', '~> 0.9'
+  spec.add_dependency 'faraday', '~> 0.13'
   spec.add_dependency 'mimemagic'
   spec.add_development_dependency 'dotenv'
   spec.add_development_dependency 'rake'
