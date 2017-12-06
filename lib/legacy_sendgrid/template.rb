@@ -1,6 +1,6 @@
 require 'smtpapi'
 
-module SendGrid
+module LegacySendGrid
   class Template
     attr_reader :id, :recipients
 

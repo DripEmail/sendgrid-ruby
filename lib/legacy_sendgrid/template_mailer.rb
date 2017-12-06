@@ -1,4 +1,4 @@
-module SendGrid
+module LegacySendGrid
   class InvalidClient < StandardError; end
   class InvalidTemplate < StandardError; end
   class InvalidRecipients < StandardError; end
@@ -15,16 +15,16 @@ module SendGrid
     # recipients = []
     #
     # users.each do |user|
-    #   recipient = SendGrid::Recipient.new(user.email)
+    #   recipient = LegacySendGrid::Recipient.new(user.email)
     #   recipient.add_substitution('first_name', user.first_name)
     #   recipient.add_substitution('city', user.city)
     #
     #   recipients << recipient
     # end
     #
-    # template = SendGrid::Template.new('MY_TEMPLATE_ID')
+    # template = LegacySendGrid::Template.new('MY_TEMPLATE_ID')
     #
-    # client = SendGrid::Client.new(api_user: my_user, api_key: my_key)
+    # client = LegacySendGrid::Client.new(api_user: my_user, api_key: my_key)
     #
     # mail_defaults = {
     #   from: 'admin@email.com',
@@ -33,7 +33,7 @@ module SendGrid
     #   subject: 'Email is great',
     # }
     #
-    # mailer = SendGrid::TemplateMailer.new(client, template, recipients)
+    # mailer = LegacySendGrid::TemplateMailer.new(client, template, recipients)
     # mailer.mail(mail_defaults)
     def initialize(client, template, recipients = [])
       @client = client

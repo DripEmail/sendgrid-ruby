@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'sendgrid/version'
+require 'legacy_sendgrid/version'
 
 Gem::Specification.new do |spec|
-  spec.name        = 'sendgrid-ruby'
-  spec.version     = SendGrid::VERSION
+  spec.name        = 'legacy-sendgrid-ruby'
+  spec.version     = LegacySendGrid::VERSION
   spec.authors     = ['Robin Johnson', 'Eddie Zaneski']
   spec.email       = 'community@sendgrid.com'
   spec.summary     = 'Official SendGrid Gem'

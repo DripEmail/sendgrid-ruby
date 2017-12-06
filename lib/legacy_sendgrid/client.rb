@@ -2,7 +2,7 @@ require 'faraday'
 require 'base64'
 require 'cgi'
 
-module SendGrid
+module LegacySendGrid
   class Client
     attr_accessor :api_user, :api_key, :protocol, :host, :port, :url, :endpoint,
                   :user_agent, :template
@@ -18,7 +18,7 @@ module SendGrid
       self.endpoint         = params.fetch(:endpoint, '/api/mail.send.json')
       self.adapter          = params.fetch(:adapter, adapter)
       self.conn             = params.fetch(:conn, conn)
-      self.user_agent       = params.fetch(:user_agent, "sendgrid/#{SendGrid::VERSION};ruby")
+      self.user_agent       = params.fetch(:user_agent, "sendgrid/#{LegacySendGrid::VERSION};ruby")
       self.raise_exceptions = params.fetch(:raise_exceptions, true)
       yield self if block_given?
     end
@@ -296,10 +296,10 @@ module SendGrid
       res = yield
 
       if raise_exceptions? && res.status != expected_status
-        fail SendGrid::Exception, { code: res.status, headers: res.headers, body: res.body }.to_json
+        fail LegacySendGrid::Exception, { code: res.status, headers: res.headers, body: res.body }.to_json
       end
 
-      SendGrid::Response.new(code: res.status, headers: res.headers, body: res.body)
+      LegacySendGrid::Response.new(code: res.status, headers: res.headers, body: res.body)
     end
   end
 end

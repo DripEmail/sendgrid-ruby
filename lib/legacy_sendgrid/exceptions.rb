@@ -1,4 +1,4 @@
-module SendGrid
+module LegacySendGrid
   class Exception < StandardError
     def initialize(message)
       super(message)

@@ -1,6 +1,6 @@
-require_relative '../../../lib/sendgrid/template'
+require_relative '../../../lib/legacy_sendgrid/template'
 
-module SendGrid
+module LegacySendGrid
   describe Template do
     let(:id) { anything }
     subject { described_class.new(id) }

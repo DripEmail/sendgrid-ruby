@@ -1,4 +1,4 @@
-# SendGrid::Ruby
+# LegacySendGrid::Ruby
 
 This Gem allows you to quickly and easily send emails through SendGrid's Web API using native Ruby.
 
@@ -29,17 +29,17 @@ Create a new client with your SendGrid [API Key](https://app.sendgrid.com/settin
 require 'sendgrid-ruby'
 
 # As a hash
-client = SendGrid::Client.new(api_key: 'YOUR_SENDGRID_APIKEY')
+client = LegacySendGrid::Client.new(api_key: 'YOUR_SENDGRID_APIKEY')
 
 # Or as a block
-client = SendGrid::Client.new do |c|
+client = LegacySendGrid::Client.new do |c|
   c.api_key = 'YOUR_SENDGRID_APIKEY'
 end
 ```
 
 Create a new Mail object and send:
 ```ruby
-mail = SendGrid::Mail.new do |m|
+mail = LegacySendGrid::Mail.new do |m|
   m.to = 'test@sendgrid.com'
   m.from = 'taco@cat.limo'
   m.subject = 'Hello world!'
@@ -55,7 +55,7 @@ puts res.body
 
 You can also create a Mail object with a hash:
 ```ruby
-res = client.send(SendGrid::Mail.new(to: 'example@example.com', from: 'taco@cat.limo', subject: 'Hello world!', text: 'Hi there!', html: '<b>Hi there!</b>'))
+res = client.send(LegacySendGrid::Mail.new(to: 'example@example.com', from: 'taco@cat.limo', subject: 'Hello world!', text: 'Hi there!', html: '<b>Hi there!</b>'))
 puts res.code
 puts res.body
 # 200
@@ -73,7 +73,7 @@ mail.add_attachment('/tmp/report.pdf', 'july_report.pdf')
 
 Inline content can be added to a Mail object with the `add_content` method. The first parameter is the path to the file, the second parameter is the cid to be referenced in the html.
 ```ruby
-mail = SendGrid::Mail.new do |m|
+mail = LegacySendGrid::Mail.new do |m|
   m.to = 'test@sendgrid.com'
   m.from = 'taco@cat.limo'
   m.subject = 'Hello world!'
@@ -112,12 +112,12 @@ params = {
 Params can be set in the usual Ruby ways, including a block or a hash.
 
 ````ruby
-mail = SendGrid::Mail.new do |m|
+mail = LegacySendGrid::Mail.new do |m|
   m.to = 'rbin@sendgrid.com'
   m.from = 'taco@rbin.codes'
 end
 
-client.send(SendGrid::Mail.new(to: 'rbin@sendgrid.com', from: 'taco@cat.limo'))
+client.send(LegacySendGrid::Mail.new(to: 'rbin@sendgrid.com', from: 'taco@cat.limo'))
 ````
 
 #### :to
@@ -125,7 +125,7 @@ client.send(SendGrid::Mail.new(to: 'rbin@sendgrid.com', from: 'taco@cat.limo'))
 Using the **:to** param, we can pass a single email address as a string, or an array of email address strings.
 
 ````ruby
-mail = SendGrid::Mail.new
+mail = LegacySendGrid::Mail.new
 mail.to = 'taco@rbin.codes'
 # or
 mail.to = ['Example Dude <example@email.com>', 'john@email.com']
@@ -136,7 +136,7 @@ mail.to = ['rbin@sendgrid.com', 'taco@cat.limo']
 #### :from
 
 ```ruby
-mail = SendGrid::Mail.new
+mail = LegacySendGrid::Mail.new
 mail.from = 'me@sendgrid.com'
 ```
 
@@ -145,7 +145,7 @@ mail.from = 'me@sendgrid.com'
 As with **:to**, **:cc** can take a single string or an array of strings.
 
 ```ruby
-mail = SendGrid::Mail.new
+mail = LegacySendGrid::Mail.new
 mail.cc = ['robin@sendgrid.com', 'taco@cat.limo']
 ```
 
@@ -154,14 +154,14 @@ mail.cc = ['robin@sendgrid.com', 'taco@cat.limo']
 As with **:to** and **:cc**, **:bcc** can take a single string or an array of strings.
 
 ```ruby
-mail = SendGrid::Mail.new
+mail = LegacySendGrid::Mail.new
 mail.bcc = ['robin@sendgrid.com', 'taco@cat.limo']
 ```
 
 #### :subject
 
 ```ruby
-mail = SendGrid::Mail.new
+mail = LegacySendGrid::Mail.new
 mail.subject = 'This is a subject string'
 ```
 
@@ -171,7 +171,7 @@ mail.subject = 'This is a subject string'
 Using the **:text** param allows us to add plain text to our email body.
 
 ```ruby
-mail = SendGrid::Mail.new
+mail = LegacySendGrid::Mail.new
 mail.text = 'WHATTUP KITTY CAT!?'
 ```
 
@@ -179,7 +179,7 @@ mail.text = 'WHATTUP KITTY CAT!?'
 
 Using the **:html** param allows us to add html content to our email body.
 ```ruby
-mail = SendGrid::Mail.new
+mail = LegacySendGrid::Mail.new
 mail.html = '<html><body>Stuff in here, yo!</body></html>'
 ```
 
@@ -188,7 +188,7 @@ mail.html = '<html><body>Stuff in here, yo!</body></html>'
 The **:template** param allows us to specify a template object for this email to use. The initialized `Template` will automatically be included in the `smtpapi` header and passed to SendGrid.
 
 ```ruby
-template = SendGrid::Template.new('MY_TEMPLATE_ID')
+template = LegacySendGrid::Template.new('MY_TEMPLATE_ID')
 mail.template = template
 ```
 
@@ -204,7 +204,7 @@ users = User.where(email: ['first@gmail.com', 'second@gmail.com'])
 recipients = []
 
 users.each do |user|
-  recipient = SendGrid::Recipient.new(user.email)
+  recipient = LegacySendGrid::Recipient.new(user.email)
   recipient.add_substitution('first_name', user.first_name)
   recipient.add_substitution('city', user.city)
 
@@ -215,13 +215,13 @@ end
 Create a `Template`
 
 ```ruby
-template = SendGrid::Template.new('MY_TEMPLATE_ID')
+template = LegacySendGrid::Template.new('MY_TEMPLATE_ID')
 ```
 
 Create a `Client`
 
 ```ruby
-client = SendGrid::Client.new(api_user: my_user, api_key: my_key)
+client = LegacySendGrid::Client.new(api_user: my_user, api_key: my_key)
 ```
 
 Initialize mail defaults and create the `TemplateMailer`
@@ -234,7 +234,7 @@ mail_defaults = {
   subject: 'Email is great'
 }
 
-mailer = SendGrid::TemplateMailer.new(client, template, recipients)
+mailer = LegacySendGrid::TemplateMailer.new(client, template, recipients)
 ```
 
 Mail it!

@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe 'SendGrid::Mail' do
+describe 'LegacySendGrid::Mail' do
   before(:each) do
-    @mail = SendGrid::Mail.new
+    @mail = LegacySendGrid::Mail.new
   end
 
   it 'should create an instance' do
-    expect(SendGrid::Mail.new).to be_an_instance_of(SendGrid::Mail)
+    expect(LegacySendGrid::Mail.new).to be_an_instance_of(LegacySendGrid::Mail)
   end
 
   describe 'add_to_name' do
@@ -127,7 +127,7 @@ describe 'SendGrid::Mail' do
     end
 
     context 'a template has been set' do
-      let(:template) { SendGrid::Template.new(anything) }
+      let(:template) { LegacySendGrid::Template.new(anything) }
 
       it 'adds the template to the smtpapi header' do
         expect(@mail.template).to receive(:add_to_smtpapi).with(@mail.smtpapi)
@@ -141,7 +141,7 @@ describe 'SendGrid::Mail' do
       let(:template) { nil }
 
       it 'does not add anything to the smtpapi header' do
-        expect_any_instance_of(SendGrid::Template).to_not receive(:add_to_smtpapi)
+        expect_any_instance_of(LegacySendGrid::Template).to_not receive(:add_to_smtpapi)
         expect(@mail.smtpapi).to receive(:to_json)
 
         @mail.to_h
