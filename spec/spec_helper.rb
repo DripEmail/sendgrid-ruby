@@ -1,1 +1,1 @@
-require_relative '../lib/sendgrid-ruby'
+require_relative '../lib/legacy-sendgrid-ruby'
