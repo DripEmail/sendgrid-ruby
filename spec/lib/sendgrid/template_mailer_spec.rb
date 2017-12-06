@@ -1,6 +1,6 @@
-require_relative '../../../lib/sendgrid/template_mailer'
+require_relative '../../../lib/legacy_sendgrid/template_mailer'
 
-module SendGrid
+module LegacySendGrid
   describe TemplateMailer do
     let(:client) { anything }
     let(:template) { Template.new(anything) }

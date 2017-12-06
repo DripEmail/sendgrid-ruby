@@ -1,6 +1,6 @@
 require 'json'
 
-module SendGrid
+module LegacySendGrid
   class Response
     attr_reader :code, :headers, :body, :raw_body
 

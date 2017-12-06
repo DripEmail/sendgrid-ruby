@@ -1,6 +1,6 @@
-require_relative '../../../lib/sendgrid/recipient'
+require_relative '../../../lib/legacy_sendgrid/recipient'
 
-module SendGrid
+module LegacySendGrid
   describe Recipient do
     subject { described_class.new(anything) }
 
