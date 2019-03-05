@@ -2,7 +2,7 @@ require 'json'
 require 'smtpapi'
 require 'mimemagic'
 
-module SendGrid
+module LegacySendGrid
   class Mail
     attr_accessor :to, :to_name, :from, :from_name, :subject, :text, :html, :cc, :cc_name,
                   :bcc, :bcc_name, :reply_to, :date, :smtpapi, :attachments, :content, :template

@@ -1,6 +1,6 @@
 require 'smtpapi'
 
-module SendGrid
+module LegacySendGrid
   class Recipient
     class NoAddress < StandardError; end
 

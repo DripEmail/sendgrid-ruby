@@ -1,0 +1,8 @@
+require_relative 'legacy_sendgrid/client'
+require_relative 'legacy_sendgrid/exceptions'
+require_relative 'legacy_sendgrid/recipient'
+require_relative 'legacy_sendgrid/template'
+require_relative 'legacy_sendgrid/template_mailer'
+require_relative 'legacy_sendgrid/mail'
+require_relative 'legacy_sendgrid/response'
+require_relative 'legacy_sendgrid/version'
